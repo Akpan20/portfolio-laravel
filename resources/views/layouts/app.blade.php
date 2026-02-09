@@ -15,22 +15,29 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
+
+        @include('layouts.navigation')
+
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
 
-            <!-- Page Heading -->
-            @if(view()->hasSection('header'))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        @yield('header')
-                    </div>
-                </header>
-            @endif
+            <!-- Add padding-top here matching your navbar height -->
+            <div class="pt-16 md:pt-20 lg:pt-24">   <!-- 4rem = 64px – most common value for h-16 navbar -->
 
-            <!-- Page Content -->
-            <main>
-                @yield('content')
-            </main>
+                @if(view()->hasSection('header'))
+                    <header class="bg-white shadow">
+                        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                            @yield('header')
+                        </div>
+                    </header>
+                @endif
+
+                <main>
+                    @yield('content')
+                </main>
+
+            </div>
+
         </div>
+
     </body>
 </html>
